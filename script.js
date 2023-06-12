@@ -20,7 +20,7 @@ player has won. Everything else that isn't one of these conditions above are con
 Output of this function returns string of winner  */
 let playRound = (player, computer) => {
     if (player == computer) {
-        alert("It's a tie! Play on!");
+        return 'tie';
     } 
     else if ( (player == 'rock' && computer == 'scissors') || 
         (player == 'paper' && computer == 'rock') || 
