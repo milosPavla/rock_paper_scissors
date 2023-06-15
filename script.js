@@ -30,12 +30,14 @@ function compareInputs(player, computer) { // Returns winner by comparing choice
 }
 
 function startGame(e) {
+    // e.stopPropagation()
 
-    playerChoice = e.target.parentElement.id;  // Targeting parent element of an image inside of a div as it is event target.
+    playerChoice = this.id;  // changed from e.target.id ==> this.id because 'this' cathes all clicks inside of a div,
+                             // but e.target cathes only clicks exactly on that target and not on child clicks.
     computerChoice = getComputerChoice();
 
     let computerOutput = document.querySelector('.computer-output');
-    computerOutput.innerHTML = `<img src="images/${computerChoice}.png"></img>`;
+    computerOutput.innerHTML = `<img src="images/${computerChoice}.png"></img>${computerChoice}`;
 
     console.log('pc:' + playerChoice);
     console.log('cc:' + computerChoice);
@@ -56,6 +58,8 @@ function startGame(e) {
 
 const cards = document.querySelectorAll('.card');
 
-cards.forEach(card => card.addEventListener('click', startGame)); 
+cards.forEach(card => card.addEventListener('click', startGame, {
+    // capture: false
+})); 
 
 
