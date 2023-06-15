@@ -15,7 +15,7 @@ function getComputerChoice() {
     }
 }
 
-function compareInputs(player, computer) {
+function compareInputs(player, computer) { // Returns winner by comparing choices
     if (player == computer) {
         return 'tie';
     } 
@@ -30,7 +30,8 @@ function compareInputs(player, computer) {
 }
 
 function startGame(e) {
-    playerChoice = e.target.id;
+
+    playerChoice = e.target.parentElement.id;  // Targeting parent element of an image inside of a div as it is event target.
     computerChoice = getComputerChoice();
 
     let computerOutput = document.querySelector('.computer-output');
@@ -55,12 +56,6 @@ function startGame(e) {
 
 const cards = document.querySelectorAll('.card');
 
-cards.forEach(this.addEventListener('click', startGame));
+cards.forEach(card => card.addEventListener('click', startGame)); 
 
-
-// const startButton = document.querySelector('.start-button');
-// startButton.addEventListener('click', startGame);
-
-
-game();
 
